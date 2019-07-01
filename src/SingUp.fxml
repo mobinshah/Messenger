@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SingUp">
    <children>
       <Button fx:id="btnBack" layoutX="62.0" layoutY="326.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" text="back" />
@@ -20,7 +19,7 @@
       <TextField fx:id="txtfFirstname" layoutX="221.0" layoutY="32.0" prefHeight="26.0" prefWidth="203.0" />
       <TextField fx:id="txtfLastname" layoutX="221.0" layoutY="72.0" prefHeight="26.0" prefWidth="203.0" />
       <TextField fx:id="txtfUsername" layoutX="221.0" layoutY="112.0" prefHeight="26.0" prefWidth="203.0" />
-      <TextField fx:id="txtfPAssword" layoutX="221.0" layoutY="192.0" prefHeight="26.0" prefWidth="203.0" />
+      <TextField fx:id="txtfPassword" layoutX="221.0" layoutY="192.0" prefHeight="26.0" prefWidth="203.0" />
       <Button fx:id="btnPhoto" layoutX="237.0" layoutY="240.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" text="Select your photo" />
       <TextField fx:id="txtfEmail" layoutX="221.0" layoutY="151.0" prefHeight="26.0" prefWidth="203.0" />
    </children>

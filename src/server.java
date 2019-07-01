@@ -12,23 +12,27 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class server extends Application {
+    static Stage stage;
+    // static
     @Override
-    public void start(Stage primaryStage) throws Exception {
-Stage stage = primaryStage;
+    public void start(Stage Stage) throws Exception {
+        stage = Stage;
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        primaryStage.setScene(new Scene(root, 600, 600));
-        primaryStage.setTitle("Messanger");
-        primaryStage.show();
+        Stage.setScene(new Scene(root, 600, 600));
+        Stage.setTitle("Messanger");
+        stage.alwaysOnTopProperty();
+        Stage.show();
     }
 
 
     public static void main(String[] args) throws IOException {
         launch();
-        ServerSocket serverSocket = new ServerSocket(100100);
+        ServerSocket serverSocket = new ServerSocket(8080);
         Socket socket ;
         socket = serverSocket.accept();
         DataOutputStream dos =new DataOutputStream(socket.getOutputStream());
         DataInputStream dis = new DataInputStream(socket.getInputStream());
+
         }
 
     }
