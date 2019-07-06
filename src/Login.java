@@ -26,6 +26,9 @@ public class Login implements Initializable {
         btnlogin.setOnAction(event -> {
             {
               String username = txtfusername.getText();
+              String password = txtfpassword.getText();
+
+
 
             }
         });
