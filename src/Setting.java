@@ -34,6 +34,8 @@ public class Setting implements Initializable {
     TextField txtfP ;
     @FXML
     TextField txtfE ;
+    @FXML
+    Button btnback ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,6 +59,15 @@ public class Setting implements Initializable {
         btnExit.setOnAction(event -> {
 
             System.exit(0);
+        });
+
+
+        btnback.setOnAction(event -> {
+            try {
+                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("chatroom.fxml"))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 }
