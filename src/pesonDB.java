@@ -31,18 +31,31 @@ public class pesonDB {
         ArrayList<String > getperson = new ArrayList<>();
         if (resultSet.next()) {
             getperson.add(resultSet.getString("username"));
-            getresultSet.getString("pass");
-            resultSet.getString("email");
-            resultSet.getString("firstname");
-            resultSet.getString("lastname");
-            resultSet.getString("photo");
+            getperson.add(resultSet.getString("pass"));
+            getperson.add(resultSet.getString("email"));
+            getperson.add(resultSet.getString("firstname"));
+            getperson.add(resultSet.getString("lastname"));
+            getperson.add(resultSet.getString("photo"));
 
         }
+
 
         return getperson;
 
 
     }
+    public void deletePerson(String username) throws Exception {
+        preparedStatement = connection.prepareStatement("delete from person where username = ?");
+        preparedStatement.setString(1, username);
+        preparedStatement.executeUpdate();
+    }
+    public void close() throws Exception{
+        preparedStatement.close();
+        connection.close();
+    }
+
+
+
 
 
 
