@@ -4,9 +4,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -20,14 +22,30 @@ public class Login implements Initializable {
     TextField txtfusername ;
     @FXML
     TextField txtfpassword ;
-
+@FXML Text txt;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnlogin.setOnAction(event -> {
             {
               String username = txtfusername.getText();
-              String password = txtfpassword.getText();
 
+              String password = txtfpassword.getText();
+                try {
+
+                    pesonDB pesonDB = new pesonDB();
+                    ArrayList<String> person1 = new ArrayList<>();
+                    person1 = pesonDB.getPerson(username);
+//                    if (username.equals(person1.get(0))) {
+                        if (password.equals(person1.get(1))) {
+                            server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Search.fxml"))));
+                        }
+//                    }
+                }
+
+
+                 catch (Exception e) {
+                    e.printStackTrace();
+                }
 
 
             }

@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Search implements Initializable {
@@ -24,9 +25,15 @@ public class Search implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
        btnSearch.setOnAction(event -> {
            String Search = txtfSearch.getText();
+           String username =
            try {
+               pesonDB pesonDB = new pesonDB();
+               ArrayList<String> person2 = new ArrayList<>();
+               person2 = pesonDB.getPerson(username);
                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("chatroom.fxml"))));
            } catch (IOException e) {
+               e.printStackTrace();
+           } catch (Exception e) {
                e.printStackTrace();
            }
        });

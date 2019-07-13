@@ -27,11 +27,15 @@ public class server extends Application {
 
     public static void main(String[] args) throws IOException {
         launch();
-        ServerSocket serverSocket = new ServerSocket(8080);
+        ServerSocket serverSocket = new ServerSocket(8088);
         Socket socket ;
         socket = serverSocket.accept();
         DataOutputStream dos =new DataOutputStream(socket.getOutputStream());
         DataInputStream dis = new DataInputStream(socket.getInputStream());
+
+
+
+
 
         }
 

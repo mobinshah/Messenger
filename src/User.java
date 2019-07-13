@@ -1,3 +1,5 @@
+import com.sun.javafx.binding.StringFormatter;
+
 public class User {
     private String username;
     private String password;
@@ -7,7 +9,7 @@ public class User {
 
 
 
-    public User(String username, String password, int age) {
+    public User(String username, String password, String firstname ,String lastname, String email) {
         this.username = username;
         this.password = password;
         this.firstname = firstname ;
