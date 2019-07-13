@@ -6,15 +6,24 @@ public class User {
     private String firstname ;
     private String lastname ;
     private String email ;
+    private String Image ;
 
 
-
-    public User(String username, String password, String firstname ,String lastname, String email) {
+    public User(String username, String password, String firstname , String lastname, String email, String Image ) {
         this.username = username;
         this.password = password;
         this.firstname = firstname ;
         this.lastname = lastname ;
         this.email = email ;
+        this.Image = Image ;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 
     public String getEmail() {

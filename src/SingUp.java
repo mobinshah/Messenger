@@ -5,13 +5,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SingUp implements Initializable {
+    String Image ;
     @FXML
     Button btnBack ;
     @FXML
@@ -31,7 +34,9 @@ public class SingUp implements Initializable {
     @FXML
     Button btnPhoto ;
     @FXML
-    Text txt ;
+    Text txtuser ;
+    @FXML
+    Text txtpass ;
 
 
 
@@ -45,25 +50,32 @@ public class SingUp implements Initializable {
         String Email = txtfEmail.getText();
         String username = txtfUsername.getText();
         String pass = txtfPassword.getText();
-        User user = new User(username, pass,firstname,lastname,Email);
+        User user = new User(username, pass, firstname, lastname, Email,Image);
         try {
-            ArrayList<String > person11=new ArrayList<>();
-//            ArrayList<String > person1 = new ArrayList<>();
+            pesonDB pesonDB = new pesonDB();
+            pesonDB.addPerson(user);
+            ArrayList<String> person11 = new ArrayList<>();
+
+            ArrayList<String> person1 = new ArrayList<>();
+
+//            person11 = pesonDB.getPerson(username);
 //            person1 = pesonDB.getPerson(pass);
-//            person11 =pesonDB.getPerson(username);
-            if (person11.isEmpty()){
-//                System.out.println("lllll");
-                txt.setText("username not exsist");
+//            if (person11.isEmpty()) {
+//                txtuser.setText("username not exsist");
+//            } else {
+//                if (person1.isEmpty()) {
+//                    txtpass.setText(("password not exsist"));
+//                }else {
+//
+//                    server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Search.fxml"))));
 //            pesonDB pesonDB = new pesonDB() ;
 //            ArrayList<String> person1 = new ArrayList<>();
 //            person1 = pesonDB.getPerson(username);
 //            if (username.equals(person1.get(0))){
 //                if (pass.equals(person1.get(1))) {
-//                    server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Search.fxml"))));
-
-//                }
 //
-           }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,10 +87,9 @@ public class SingUp implements Initializable {
 //
 //            pesonDB pesonDB = new pesonDB();
 //
-//            pesonDB.addPerson(user);
 
-//                if (person1.isEmpty())
-//                    txt.setText(("password not exsist"));
+
+
 
 //        } catch (Exception e) {
 //            e.printStackTrace();
@@ -94,6 +105,16 @@ public class SingUp implements Initializable {
         btnExit.setOnAction(event -> {
 
             System.exit(0);
+        });
+
+        btnPhoto.setOnAction(event -> {
+            FileChooser fileChooser = new FileChooser();
+            File selectedFile = fileChooser.showOpenDialog(null);
+            if (selectedFile != null) {
+                Image = selectedFile.getPath();
+
+            }
+//            fileChooser.setSelectedExtensionFilter();
         });
 
     }

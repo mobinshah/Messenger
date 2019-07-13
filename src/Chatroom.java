@@ -6,9 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,7 +43,18 @@ btnSetting.setOnAction(event -> {
         e.printStackTrace();
     }
 });
+        try {
+            pesonDB pd = new pesonDB();
+            Image image = new Image(new FileInputStream(pd.getPerson(Search.Search).get(5)));
+            ImageView iv=new ImageView(image);
+            iv.setFitHeight(20);
+            iv.setFitWidth(20);
+            btnInformation.setGraphic(iv);
 
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 btnFile.setOnAction(event -> {
     FileChooser fileChooser = new FileChooser();

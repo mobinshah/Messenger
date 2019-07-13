@@ -14,13 +14,13 @@ public class pesonDB {
     }
 
     public void addPerson(User user) throws Exception {
-        preparedStatement = connection.prepareStatement("insert into person values (default ,?,?,?,?,?)");
+        preparedStatement = connection.prepareStatement("insert into person values (default ,?,?,?,?,?,?)");
         preparedStatement.setString(1, user.getUsername());
         preparedStatement.setString(2, user.getPassword());
         preparedStatement.setString(3, user.getEmail());
         preparedStatement.setString(4, user.getFirstname());
         preparedStatement.setString(5, user.getLastname());
-
+preparedStatement.setString(6,user.getImage());
         preparedStatement.executeUpdate();
     }
 

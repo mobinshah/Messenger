@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,7 +21,8 @@ public class Login implements Initializable {
     TextField txtfusername ;
     @FXML
     TextField txtfpassword ;
-@FXML Text txt;
+    @FXML
+    Text txt;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnlogin.setOnAction(event -> {
@@ -38,6 +38,11 @@ public class Login implements Initializable {
 //                    if (username.equals(person1.get(0))) {
                         if (password.equals(person1.get(1))) {
                             server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Search.fxml"))));
+                        }else{
+                            if (!password.equals(person1.get(1))){
+                                txt.setText("information does not exist ");
+                            }
+
                         }
 //                    }
                 }
