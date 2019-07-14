@@ -67,8 +67,8 @@ btnFile.setOnAction(event -> {
 
                 try {
                     TEXT = txtfMessege.getText();
-                    server.dos.writeUTF(TEXT+"\n");
-                    txta.appendText(TEXT);
+                    server.dos.writeUTF(Login.username + ":" +TEXT);
+                    txta.appendText("you :" +TEXT +"\n");
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -81,13 +81,16 @@ btnFile.setOnAction(event -> {
 
         });
 
+
         new Thread(()-> {
             try {
 //
-//                TEXT = txtfMessege.getText();
-                TEXT = server.dis.readUTF();
-                txta.appendText(TEXT);
+                while (true) {
 
+//                TEXT = txtfMessege.getText();
+                    TEXT = server.dis.readUTF();
+                    txta.appendText(TEXT + "\n");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

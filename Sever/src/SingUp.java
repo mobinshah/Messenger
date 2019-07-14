@@ -52,11 +52,14 @@ public class SingUp implements Initializable {
         String pass = txtfPassword.getText();
         User user = new User(username, pass, firstname, lastname, Email,Image);
         try {
+
             pesonDB pesonDB = new pesonDB();
             pesonDB.addPerson(user);
             ArrayList<String> person11 = new ArrayList<>();
 
             ArrayList<String> person1 = new ArrayList<>();
+            server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Search.fxml"))));
+
 
 //            person11 = pesonDB.getPerson(username);
 //            person1 = pesonDB.getPerson(pass);
@@ -67,8 +70,7 @@ public class SingUp implements Initializable {
 //                    txtpass.setText(("password not exsist"));
 //                }else {
 //
-//                    server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Search.fxml"))));
-//            pesonDB pesonDB = new pesonDB() ;
+//                             pesonDB pesonDB = new pesonDB() ;
 //            ArrayList<String> person1 = new ArrayList<>();
 //            person1 = pesonDB.getPerson(username);
 //            if (username.equals(person1.get(0))){
