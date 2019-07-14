@@ -41,7 +41,6 @@ public class Search implements Initializable {
 
                }
 
-
            } catch (IOException e) {
                e.printStackTrace();
            } catch (Exception e) {

@@ -11,8 +11,15 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
+
 public class server extends Application {
+   public static DataInputStream dis ;
+   public static DataOutputStream dos ;
+
     static Stage stage;
+
+
     // static
     @Override
     public void start(Stage Stage) throws Exception {
@@ -24,16 +31,15 @@ public class server extends Application {
         Stage.show();
     }
 
-
     public static void main(String[] args) throws IOException {
-        launch();
+
         ServerSocket serverSocket = new ServerSocket(8088);
         Socket socket ;
         socket = serverSocket.accept();
-        DataOutputStream dos =new DataOutputStream(socket.getOutputStream());
-        DataInputStream dis = new DataInputStream(socket.getInputStream());
+        dos =new DataOutputStream(socket.getOutputStream());
+        dis = new DataInputStream(socket.getInputStream());
 
-
+        launch();
 
 
 
