@@ -24,13 +24,14 @@ public class Login implements Initializable {
     @FXML
     Text txt;
     public static String username;
+    public static String password;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnlogin.setOnAction(event -> {
             {
             username  = txtfusername.getText();
 
-              String password = txtfpassword.getText();
+               password = txtfpassword.getText();
                 try {
 
                     pesonDB pesonDB = new pesonDB();
