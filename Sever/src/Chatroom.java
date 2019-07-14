@@ -48,8 +48,8 @@ btnSetting.setOnAction(event -> {
             pesonDB pd = new pesonDB();
             Image image = new Image(new FileInputStream(pd.getPerson(Search.Search).get(5)));
             ImageView iv=new ImageView(image);
-            iv.setFitHeight(40);
-            iv.setFitWidth(30);
+            iv.setFitHeight(100);
+            iv.setFitWidth(60);
             btnInformation.setGraphic(iv);
 
 
@@ -82,7 +82,7 @@ btnFile.setOnAction(event -> {
         });
 
 
-        new Thread(()-> {
+        new Thread(()->{
             try {
 //
                 while (true) {
