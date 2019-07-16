@@ -26,7 +26,7 @@ public class server extends Application {
         stage = Stage;
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         Stage.setScene(new Scene(root, 600, 600));
-        Stage.setTitle("Messanger");
+        Stage.setTitle("Messanger1");
         stage.alwaysOnTopProperty();
         Stage.show();
     }

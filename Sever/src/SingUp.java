@@ -39,7 +39,7 @@ public class SingUp implements Initializable {
     Text txtpass ;
 
 
-
+   public static String Email ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,9 +47,10 @@ public class SingUp implements Initializable {
         String firstname = txtfFirstname.getText();
 //        System.out.println(firstname);
         String lastname = txtfLastname.getText();
-        String Email = txtfEmail.getText();
+        Email = txtfEmail.getText();
         String username = txtfUsername.getText();
         String pass = txtfPassword.getText();
+        pass=safely.encrypt(pass);
         User user = new User(username, pass, firstname, lastname, Email,Image);
         try {
 
@@ -58,7 +59,7 @@ public class SingUp implements Initializable {
             ArrayList<String> person11 = new ArrayList<>();
 
             ArrayList<String> person1 = new ArrayList<>();
-            server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Search.fxml"))));
+            server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("rejesterEmail.fxml"))));
 
 
 //            person11 = pesonDB.getPerson(username);

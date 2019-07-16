@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class chatHistoryDB {
+    ArrayList<String> ShowPm = new ArrayList<>();
+
     private Connection connection;
     private PreparedStatement preparedStatement;
 
@@ -16,27 +18,29 @@ public class chatHistoryDB {
 
     }
     public void addpm(chatHistory chatHistory) throws Exception {
-        preparedStatement = connection.prepareStatement("insert into person values (default ,?,?,?,?,?)");
+        preparedStatement = connection.prepareStatement("insert into chathistory values (default ,?,?,?,?)");
         preparedStatement.setString(1, chatHistory.getUsernamesend());
         preparedStatement.setString(2, chatHistory.getUsernameresive());
-        preparedStatement.setString(3, chatHistory.getPmsend());
-        preparedStatement.setString(4, chatHistory.getPmresive());
-        preparedStatement.setString(5, chatHistory.getDate());
+        preparedStatement.setString(3, chatHistory.getPmresive());
+        preparedStatement.setString(4, chatHistory.getDate());
         preparedStatement.executeUpdate();
     }
-    public ArrayList<String> showPm(String username) throws Exception {
+    public ArrayList<String> showPm(String usersend,String userresive) throws Exception {
 
-        preparedStatement = connection.prepareStatement("select * from person where username = ?");
-        preparedStatement.setString(1, username);
+        preparedStatement = connection.prepareStatement("select pmresive from chathistory where (usernamesend = ? AND usernameresive=?)OR (usernameresive=? AND usernamesend=?)");
+        preparedStatement.setString(1, usersend);
+        preparedStatement.setString(2, userresive);
+        preparedStatement.setString(3, userresive);
+        preparedStatement.setString(4, usersend);
         ResultSet resultSet = preparedStatement.executeQuery();
         ArrayList<String> showPm = new ArrayList<>();
 
-        if (resultSet.next()) {
-            showPm.add(resultSet.getString("usernamesend"));
-            showPm.add(resultSet.getString("usernameresive"));
-            showPm.add(resultSet.getString("pmsend"));
+
+        while (resultSet.next()) {
+//            showPm.add(resultSet.getString("usernamesend"));
+//            showPm.add(resultSet.getString("usernameresive"));
             showPm.add(resultSet.getString("pmresive"));
-            showPm.add(resultSet.getString("date"));
+//            showPm.add(resultSet.getString("date"));
 
         }
 

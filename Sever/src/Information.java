@@ -4,23 +4,26 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class Information implements Initializable {
     @FXML
     Button btnBack ;
     @FXML
-    TextField txtfFirstname ;
+    javafx.scene.text.Text txtf;
     @FXML
-    TextField txtfLastname ;
+    javafx.scene.text.Text txtl;
     @FXML
-    TextField txtfEmail ;
+    javafx.scene.text.Text txtu;
     @FXML
-    TextField txtfusername ;
+    javafx.scene.text.Text txte;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -31,5 +34,19 @@ public class Information implements Initializable {
                 e.printStackTrace();
             }
         });
+
+        try {
+            pesonDB persondb=new pesonDB();
+            txtf.setText(persondb.getPerson(Search.Search).get(3));
+            txtl.setText(persondb.getPerson(Search.Search).get(4));
+            txtu.setText(persondb.getPerson(Search.Search).get(0));
+            txte.setText(persondb.getPerson(Search.Search).get(2));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
