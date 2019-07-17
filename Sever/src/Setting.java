@@ -36,6 +36,8 @@ public class Setting implements Initializable {
     TextField txtfE ;
     @FXML
     Button btnback ;
+    @FXML
+    Button btnDLT ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -111,5 +113,21 @@ public class Setting implements Initializable {
                 e.printStackTrace();
             }
         });
+
+    btnDLT.setOnAction(event -> {
+        try {
+            pesonDB pesonDB = new pesonDB();
+            pesonDB.deletePerson(Login.username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    });
+
+
+
+
+
+
+
     }
 }

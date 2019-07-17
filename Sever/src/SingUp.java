@@ -50,17 +50,17 @@ public class SingUp implements Initializable {
         Email = txtfEmail.getText();
         String username = txtfUsername.getText();
         String pass = txtfPassword.getText();
-        pass=safely.encrypt(pass);
+//        pass=safely.encrypt(pass);
         User user = new User(username, pass, firstname, lastname, Email,Image);
         try {
 
             pesonDB pesonDB = new pesonDB();
             pesonDB.addPerson(user);
-            ArrayList<String> person11 = new ArrayList<>();
-
-            ArrayList<String> person1 = new ArrayList<>();
             server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("rejesterEmail.fxml"))));
 
+//            ArrayList<String> person11 = new ArrayList<>();
+//
+//            ArrayList<String> person1 = new ArrayList<>();
 
 //            person11 = pesonDB.getPerson(username);
 //            person1 = pesonDB.getPerson(pass);
@@ -99,15 +99,14 @@ public class SingUp implements Initializable {
 //        }
     });
         btnBack.setOnAction(event -> {
+
             try {
+
                 server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("login.fxml"))));
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        });
-        btnExit.setOnAction(event -> {
-
-            System.exit(0);
         });
 
         btnPhoto.setOnAction(event -> {
@@ -117,8 +116,14 @@ public class SingUp implements Initializable {
                 Image = selectedFile.getPath();
 
             }
+
 //            fileChooser.setSelectedExtensionFilter();
         });
+        btnExit.setOnAction(event -> {
+
+            System.exit(0);
+        });
+
 
     }
 }

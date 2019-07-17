@@ -27,6 +27,12 @@ public class Login implements Initializable {
     public static String password;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
+        final String secretKey = "Salam";
+
+
+
         btnlogin.setOnAction(event -> {
             {
             username  = txtfusername.getText();
@@ -38,10 +44,10 @@ public class Login implements Initializable {
                     ArrayList<String> person1 = new ArrayList<>();
                     person1 = pesonDB.getPerson(username);
 //                    if (username.equals(person1.get(0))) {
-                        if (password.equals(person1.get(1))) {
+                        if (password.equals(AES.decrypt(person1.get(1), secretKey))) {
                             server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Search.fxml"))));
                         }else{
-                            if (!password.equals(safely.decrypt(person1.get(1)))){
+                            if (!password.equals(AES.decrypt(person1.get(1), secretKey))){
                                 txt.setText("information does not exist ");
                             }
 

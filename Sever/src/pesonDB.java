@@ -16,7 +16,20 @@ public class pesonDB {
     public void addPerson(User user) throws Exception {
         preparedStatement = connection.prepareStatement("insert into person values (default ,?,?,?,?,?,?)");
         preparedStatement.setString(1, user.getUsername());
-        preparedStatement.setString(2, user.getPassword());
+
+
+
+
+        final String secretKey = "Salam";
+
+        String originalString = user.getPassword();
+        String encryptedString = AES.encrypt(originalString, secretKey) ;
+
+
+
+
+
+        preparedStatement.setString(2, encryptedString);
         preparedStatement.setString(3, user.getEmail());
         preparedStatement.setString(4, user.getFirstname());
         preparedStatement.setString(5, user.getLastname());
@@ -96,10 +109,10 @@ preparedStatement.setString(6,user.getImage());
         preparedStatement.executeUpdate();
     }
 
-    public void close() throws Exception {
-        preparedStatement.close();
-        connection.close();
-    }
+//    public void close() throws Exception {
+//        preparedStatement.close();
+//        connection.close();
+//    }
 
 
 }

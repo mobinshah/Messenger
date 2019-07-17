@@ -3,8 +3,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -26,13 +24,13 @@ public class server extends Application {
         stage = Stage;
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         Stage.setScene(new Scene(root, 600, 600));
-        Stage.setTitle("Messanger1");
+        Stage.setTitle("Server");
         stage.alwaysOnTopProperty();
         Stage.show();
     }
 
     public static void main(String[] args) throws IOException {
-        launch();
+
         ServerSocket serverSocket = new ServerSocket(8088);
         Socket socket ;
         socket = serverSocket.accept();
@@ -40,7 +38,7 @@ public class server extends Application {
         dis = new DataInputStream(socket.getInputStream());
 
 
-
+        launch();
 
 
         }
